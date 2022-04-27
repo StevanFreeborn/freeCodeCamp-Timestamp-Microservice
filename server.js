@@ -1,17 +1,21 @@
 var express = require('express');
 var app = express();
 
-// enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// allow FCC to test
+// enable CORS to allow FCC to test project.
 var cors = require('cors');
 app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
-// http://expressjs.com/en/starter/static-files.html
+// serve static files from the public directory
 app.use(express.static('public'));
 
-// http://expressjs.com/en/starter/basic-routing.html
+// request to root directory serves index.html file
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
+});
+
+// initial test route
+app.get("/api/hello", function (req, res) {
+  res.json({greeting: 'hello API'});
 });
 
 // listen for requests
