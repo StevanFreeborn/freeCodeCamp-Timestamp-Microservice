@@ -38,7 +38,7 @@ app.get("/api/:date?", (req, res) => {
   date = new Date(dateString);
 
   // if parsing param value as string fails
-  // try parsing param value to number then to date
+  // try parsing param value to number then to date 
   if (date == 'Invalid Date') {
     date = new Date(parseInt(dateString));
   }
